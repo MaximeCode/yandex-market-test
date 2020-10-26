@@ -3,19 +3,15 @@ package pages;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import steps.BaseSteps;
 
 import java.util.List;
 
 public class ItemsPage {
-
-    WebDriver driver;
-    Wait<WebDriver> wait;
 
     @FindBy(tagName = "article")
     List<WebElement> items;
@@ -23,10 +19,8 @@ public class ItemsPage {
     @FindBy(id = "header-search")
     WebElement searchInput;
 
-    public ItemsPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, 5);
-        this.driver = driver;
+    public ItemsPage() {
+        PageFactory.initElements(BaseSteps.getDriver(), this);
     }
 
     public void checkNumberOfItemsOnPage(int number) {
@@ -38,10 +32,10 @@ public class ItemsPage {
     }
 
     public void search(String text) {
-        String url = driver.getCurrentUrl();
+        String url = BaseSteps.getDriver().getCurrentUrl();
         searchInput.clear();
         searchInput.sendKeys(text + Keys.ENTER);
-        wait.until(driver -> !driver.getCurrentUrl().equals(url));
+        new WebDriverWait(BaseSteps.getDriver(), 5).until(driver -> !driver.getCurrentUrl().equals(url));
     }
 
     public void checkItemTitleByNumber(int number, String title) {

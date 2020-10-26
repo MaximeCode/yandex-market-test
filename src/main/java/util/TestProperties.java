@@ -1,25 +1,22 @@
 package util;
 
-import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
 public class TestProperties {
-    private Properties properties = null;
-    private static TestProperties INSTANCE = null;
+
+    private final Properties properties = new Properties();
+    private static TestProperties INSTANCE;
 
     private TestProperties() {
         try {
-            properties = new Properties();
-//            properties.load(new FileInputStream("src/main/resources/application.properties"));
-            properties.load(new FileInputStream("src/main/resources/" + System.getProperty("env") + ".properties"));
+            properties.load(new FileReader(String.format("src/main/resources/%s.properties", "environment")));
+//            Раскомментировать для запуска с опцией - Denvironment = environment
+//            properties.load(new FileReader(String.format("src/main/resources/%s.properties", System.getProperty("environment"))));
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public Properties getProperties() {
-        return properties;
     }
 
     public static TestProperties getInstance() {
@@ -27,5 +24,9 @@ public class TestProperties {
             INSTANCE = new TestProperties();
         }
         return INSTANCE;
+    }
+
+    public Properties getProperties() {
+        return properties;
     }
 }

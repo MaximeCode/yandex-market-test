@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import steps.BaseSteps;
 
 import java.util.List;
 
@@ -14,8 +15,8 @@ public class MarketSectionPage {
     @FindBy(xpath = "//span[text()='Все фильтры']")
     WebElement filtersButton;
 
-    public MarketSectionPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+    public MarketSectionPage() {
+        PageFactory.initElements(BaseSteps.getDriver(), this);
     }
 
     public void clickMenuItem(String item) {

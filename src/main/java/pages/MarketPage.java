@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import steps.BaseSteps;
 
 import java.util.List;
 
@@ -12,8 +13,8 @@ public class MarketPage {
     @FindBy(xpath = "//div[@data-zone-name='category-link']")
     List<WebElement> menuItems;
 
-    public MarketPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+    public MarketPage() {
+        PageFactory.initElements(BaseSteps.getDriver(), this);
     }
 
     public void clickMenuItem(String item) {
