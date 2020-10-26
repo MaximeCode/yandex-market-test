@@ -17,7 +17,7 @@ public class BaseSteps {
 
     private static WebDriver driver;
 
-    @After
+    @Before
     public static void beforeSteps() {
 
         Properties properties = TestProperties.getInstance().getProperties();
@@ -36,7 +36,7 @@ public class BaseSteps {
         driver.get(properties.getProperty("url"));
     }
 
-//    @Before
+    @After
     public static void afterSteps() {
         driver.quit();
     }

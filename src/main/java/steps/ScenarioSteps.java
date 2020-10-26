@@ -43,6 +43,11 @@ public class ScenarioSteps {
         filtersPageSteps.clickMakerCheckboxes(strings);
     }
 
+    @Допустим("Выбираем производителей {string}.")
+    public void выбираем_производителей_(String string) {
+        filtersPageSteps.clickMakerCheckboxes(string);
+    }
+
     @Допустим("Нажимаем кнопку \"Применить\".")
     public void нажимаем_кнопку_Применить() {
         filtersPageSteps.clickShowButton();
