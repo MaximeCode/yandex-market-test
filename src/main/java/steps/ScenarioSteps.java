@@ -2,6 +2,10 @@ package steps;
 
 import io.cucumber.java.ru.Допустим;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class ScenarioSteps {
 
     MainPageSteps mainPageSteps = new MainPageSteps();
@@ -38,14 +42,9 @@ public class ScenarioSteps {
         filtersPageSteps.inputPriceFrom(string);
     }
 
-    @Допустим("Выбираем производителей {string} и {string}")
-    public void выбираем_производителей_(String... strings) {
-        filtersPageSteps.clickMakerCheckboxes(strings);
-    }
-
-    @Допустим("Выбираем производителей {string}")
-    public void выбираем_производителей_(String string) {
-        filtersPageSteps.clickMakerCheckboxes(string);
+    @Допустим("Выбираем производителей:")
+    public void выбираем_производителей_(List<String> data) {
+        filtersPageSteps.clickMakerCheckboxes(String.valueOf((Arrays.toString(data.toArray()))));
     }
 
     @Допустим("Нажимаем кнопку \"Применить\"")
