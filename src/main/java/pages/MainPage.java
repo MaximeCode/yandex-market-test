@@ -20,7 +20,7 @@ public class MainPage {
             menuItems.stream()
                     .filter(e -> e.getText().equals(item))
                     .findFirst()
-                    .orElseThrow(() -> new Exception("Не найден пункт меню."))
+                    .orElseThrow(() -> new Exception("Не найден пункт меню \"" + item +"\"."))
                     .click();
         } catch (Exception e) {
             e.printStackTrace();
