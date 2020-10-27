@@ -62,8 +62,8 @@
                     </argLine>
                     <properties>
                         <property>
-                            <name>listener</name>
-                            <value>util.Listener</value>
+                            <!--                            <name>listener</name>-->
+                            <!--                            <value>util.Listener</value>-->
                         </property>
                     </properties>
                     <systemProperties>

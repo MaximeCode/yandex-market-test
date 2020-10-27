@@ -13,7 +13,7 @@ public class ScenarioSteps {
     public static String stash;
 
     @Допустим("Переходим в {string}")
-    public void переходим_в_(String string) {
+    public void переходим_в(String string) {
         mainPageSteps.clickMenuItem(string);
         mainPageSteps.switchToNextWindow();
     }
