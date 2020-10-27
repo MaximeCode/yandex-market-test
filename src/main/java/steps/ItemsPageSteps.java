@@ -21,6 +21,6 @@ public class ItemsPageSteps {
     }
 
     public String getItemTitleByNumber(int number) {
-        return getItemTitleByNumber(number);
+        return itemsPage.getItemTitleByNumber(number);
     }
 }

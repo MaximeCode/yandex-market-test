@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import steps.BaseSteps;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,20 +33,20 @@ public class FiltersPage {
         priceFromInput.sendKeys(price);
     }
 
-    public void clickMakerCheckboxes(String... items) {
+    public void clickMakerCheckbox(String item) {
         try {
             Thread.sleep(5000);
             makerCheckboxes.stream()
-                    .filter(e -> Arrays.asList(items).contains(e.getAttribute("value")))
+                    .filter(e -> item.equals(e.getAttribute("value")))
                     .map(e -> new WebDriverWait(BaseSteps.getDriver(), 5)
                             .until(ExpectedConditions.elementToBeClickable(e.findElement(By.xpath("./..")))))
-                    .collect(Collectors.toList())
-                    .forEach(WebElement::click);
+                    .findFirst()
+                    .orElseThrow(() -> new Error("Не удалось найти \"" + item + "\" среди производителей."))
+                    .click();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
     public void clickShowButton() {
         showButton.click();
     }

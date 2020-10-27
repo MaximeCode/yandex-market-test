@@ -44,7 +44,7 @@ public class ScenarioSteps {
 
     @Допустим("Выбираем производителей:")
     public void выбираем_производителей_(List<String> data) {
-        filtersPageSteps.clickMakerCheckboxes(String.valueOf((Arrays.toString(data.toArray()))));
+        data.forEach(filtersPageSteps::clickMakerCheckbox);
     }
 
     @Допустим("Нажимаем кнопку \"Применить\"")
@@ -57,9 +57,9 @@ public class ScenarioSteps {
         itemsPageSteps.checkNumberOfItemsOnPage(number);
     }
 
-    @Допустим("Запоминаем первый элемент в списке")
-    public void запоминаем_первый_элемент_в_списке() {
-        stash = itemsPageSteps.getItemTitleByNumber(1);
+    @Допустим("Запоминаем {int}-ый элемент в списке")
+    public void запоминаем_элемент_в_списке(Integer number) {
+        stash = itemsPageSteps.getItemTitleByNumber(number);
     }
 
     @Допустим("В поисковую строку вводим запомненное значение")

@@ -12,8 +12,8 @@ public class FiltersPageSteps {
         filtersPage.inputPriceFrom(item);
     }
 
-    public void clickMakerCheckboxes(String... items) {
-        filtersPage.clickMakerCheckboxes(items);
+    public void clickMakerCheckbox(String item) {
+        filtersPage.clickMakerCheckbox(item);
     }
 
     public void clickShowButton() {
